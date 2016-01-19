@@ -1,0 +1,95 @@
+<head>
+  <title>mpowaga:autoform-autocomplete example</title>
+</head>
+
+<body>
+  {{> main}}
+  {{> sAlert}}
+</body>
+
+<template name="main">
+  <div class="t-main">
+    <div class="container">
+      <div class="col-md-12">
+        <h1>mpowaga:autoform-autocomplete example</h1>
+
+        <h4>
+          <small>Type <mark>#</mark> to autocomplete tags</small>
+        </h4>
+        <h4>
+          <small>Type <mark>@</mark> to autocomplete users</small>
+        </h4>
+        {{> addPost}}
+
+        <div class="row">
+          <div class="col-md-6">
+            <h1>Tags ({{tagsCount}})</h1>
+            {{> tags}}
+            {{> addTag}}
+          </div>
+
+          <div class="col-md-6">
+            <h1>Users ({{usersCount}})</h1>
+            {{> users}}
+            {{> addUser}}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="addPost">
+  <div class="t-addPost">
+    {{> quickForm collection="Posts" type="insert" id="addPost"}}
+  </div>
+</template>
+
+<template name="addTag">
+  <div class="t-addTag">
+    {{> quickForm collection="Tags" type="insert" id="addTag"
+                  template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"
+                  buttonClasses="btn btn-primary btn-sm pull-right" buttonContent="Add"}}
+  </div>
+</template>
+
+<template name="addUser">
+  <div class="t-addUser">
+    {{> quickForm collection="Users" type="insert" id="addUser"
+                  template="bootstrap3-horizontal" label-class="col-sm-3" input-col-class="col-sm-9"
+                  buttonClasses="btn btn-primary btn-sm pull-right" buttonContent="Add"}}
+  </div>
+</template>
+
+<template name="tags">
+  <div class="t-tags">
+    {{#each tag in tags}}
+      <span class="t-tags-tag">
+        #{{tag.name}}
+      </span>
+    {{/each}}
+  </div>
+</template>
+
+<template name="users">
+  <div class="t-users">
+    {{#each user in users}}
+      <span class="t-tags-tag">
+        @{{user.name}}
+      </span>
+    {{/each}}
+  </div>
+</template>
+
+<template name="autocompleteTag">
+  <div class="t-autocompleteTag">
+    {{name}}
+  </div>
+</template>
+
+<template name="autocompleteUser">
+  <div class="t-autocompleteUser">
+    {{name}}
+  </div>
+</template>

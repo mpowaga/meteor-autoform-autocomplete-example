@@ -1,0 +1,5 @@
+.t-tags,
+.t-users {
+  height: 150px;
+  overflow-y: scroll;
+}
